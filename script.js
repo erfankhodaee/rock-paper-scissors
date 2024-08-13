@@ -1,4 +1,3 @@
-console.log("yo")
 
 function getComputerChoice(){
     let x = Math.random()*100
@@ -12,8 +11,6 @@ function getComputerChoice(){
 
 }
 
-
-
 function getHumanChoice(){
     let human = +prompt("rock? =1 paper? =2 scissors? =3")
     if(human == 1){
@@ -25,12 +22,10 @@ function getHumanChoice(){
     }
 }
 
-
 function playRound(){
     let humanChoice = getHumanChoice()
     let computerChoice = getComputerChoice()
     console.log(computerChoice)
-
 
     if(humanChoice == computerChoice ){
         console.log("Tie! no one wins.")
@@ -56,10 +51,10 @@ function playRound(){
     }
 }
 
-let humanScore= 0
-let computerScore= 0
-
-function playGame(n){
+function playGame(){
+    let n = +prompt("how many rounds")
+    humanScore = 0
+    computerScore = 0
     for (let i=1 ; i<= n;i++){
         playRound()
     }
@@ -72,7 +67,11 @@ function playGame(n){
     }
 }
 
-playGame(5)
+let humanScore
+let computerScore
+
+
+playGame()
 
 
 
