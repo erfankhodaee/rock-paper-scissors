@@ -12,6 +12,7 @@ div{
   display: flex;
   max-width: 800px;
   flex-wrap: wrap;
+  margin: 0 auto;
 }
 
 p{
