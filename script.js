@@ -11,67 +11,85 @@ function getComputerChoice(){
 
 }
 
-function getHumanChoice(){
-    let human = +prompt("rock? =1 paper? =2 scissors? =3")
-    if(human == 1){
-        return "rock"
-    }else if(human == 2){
-        return "paper"
-    }else if(human == 3){
-        return "scissors"
-    }
-}
+const rock = document.querySelector("#rock")
+const paper = document.querySelector("#paper")
+const scissors = document.querySelector("#scissors")
+const playerselection = document.querySelector("#playerselection")
+const roundresult = document.querySelector("#roundresult")
+const livescore = document.querySelector("#livescore")
+const allresult = document.querySelector("#allresult")
 
-function playRound(){
+    let human
+    rock.addEventListener("click", (event)=>{
+      human = "rock"
+      playerselection.textContent = `you chose rock`
+    })
+    paper.addEventListener("click", (event)=>{
+      human = "paper"
+      playerselection.textContent = `you chose paper`
+    })
+    scissors.addEventListener("click", (event)=>{
+      human = "scissors"
+      playerselection.textContent = `you chose scissors`
+    })
+
+    function getHumanChoice(){
+      return human
+    }
+
+
+    let humanScore=0
+    let computerScore=0
+
+playround.addEventListener("click" , (event)=>{
     let humanChoice = getHumanChoice()
     let computerChoice = getComputerChoice()
-    console.log(computerChoice)
 
     if(humanChoice == computerChoice ){
-        console.log("Tie! no one wins.")
-        
+        roundresult.textContent="Tie! no one wins."
+        livescore.textContent=`the Score is ${humanScore} - ${computerScore}`
     }else if(humanChoice == "rock" && computerChoice == "paper"){
-        console.log("you lose! paper beats rock")
+        roundresult.textContent="you lose! paper beats rock"
         computerScore++
+        livescore.textContent=`the Score is ${humanScore} - ${computerScore}`
     }else if(humanChoice == "paper" && computerChoice == "rock"){
-        console.log("you win! paper beats rock")
+        roundresult.textContent="you win! paper beats rock"
         humanScore++
+        livescore.textContent=`the Score is ${humanScore} - ${computerScore}`
     }else if(humanChoice == "scissors" && computerChoice == "rock"){
-        console.log("you lose! rock beats scissors" )
+        roundresult.textContent="you lose! rock beats scissors"
         computerScore++
+        livescore.textContent=`the Score is ${humanScore} - ${computerScore}`
     }else if(humanChoice == "rock" && computerChoice == "scissors"){
-        console.log("you win! rock beats scissors" )
+        roundresult.textContent="you win! rock beats scissors"
         humanScore++
+        livescore.textContent=`the Score is ${humanScore} - ${computerScore}`
     }else if(humanChoice == "paper" && computerChoice == "scissors"){
-        console.log("you lose! scissors beats paper" )
+        roundresult.textContent="you lose! scissors beats paper"
         computerScore++
+        livescore.textContent=`the Score is ${humanScore} - ${computerScore}`
     }else if(humanChoice == "scissors" && computerChoice == "paper"){
-        console.log("you win! scissors beats paper" )
+        roundresult.textContent="you win! scissors beats paper"
         humanScore++
+        livescore.textContent=`the Score is ${humanScore} - ${computerScore}`
     }
-}
-
-function playGame(){
-    let n = +prompt("how many rounds")
-    humanScore = 0
-    computerScore = 0
-    for (let i=1 ; i<= n;i++){
-        playRound()
+    if(humanScore == 5){
+      allresult.textContent="you are the winner!!!"
+      humanScore = 0
+      computerScore = 0
+    }else if(computerScore == 5){
+      allresult.textContent="you lost to a computer :("
+      humanScore = 0
+      computerScore = 0
     }
-    if(humanScore > computerScore){
-        console.log(`you win by the socre of ${humanScore} to ${computerScore}`)
-    }else if(humanScore < computerScore){
-        console.log(`you lose by the socre of ${humanScore} to ${computerScore}`)
-    }else {
-        console.log(`you tie by the socre of ${humanScore} to ${computerScore}`)
-    }
-}
-
-let humanScore
-let computerScore
+}) 
 
 
-playGame()
+
+
+
+
+
 
 
 
